@@ -7284,3 +7284,136 @@ Processing by SurvivorsController#index as */*
 Completed 200 OK in 66ms (Views: 60.5ms | ActiveRecord: 5.3ms)
 
 
+DEPRECATION WARNING: Passing strings or symbols to the middleware builder is deprecated, please change
+them to actual class references.  For example:
+
+  "Rack::Cors" => Rack::Cors
+
+ (called from <top (required)> at /home/hadutes/zssn/config/environment.rb:5)
+Started GET "/survivors" for 127.0.0.1 at 2017-01-02 18:16:10 -0200
+  [1m[36mActiveRecord::SchemaMigration Load (77.9ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SurvivorsController#index as */*
+  Parameters: {"survivor"=>{}}
+  [1m[36mSurvivor Load (38.0ms)[0m  [1m[34mSELECT "survivors".* FROM "survivors"[0m
+[active_model_serializers]   [1m[36mItem Load (81.8ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."survivor_id" = $1[0m  [["survivor_id", 3]]
+[active_model_serializers]   [1m[36mItem Load (0.4ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."survivor_id" = $1[0m  [["survivor_id", 2]]
+[active_model_serializers]   [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."survivor_id" = $1[0m  [["survivor_id", 1]]
+[active_model_serializers]   [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."survivor_id" = $1[0m  [["survivor_id", 4]]
+[active_model_serializers]   [1m[36mResource Load (33.9ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mResource Load (0.9ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mResource Load (0.4ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mResource Load (0.3ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mResource Load (0.3ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mResource Load (0.3ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mResource Load (0.2ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mResource Load (0.2ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mResource Load (0.2ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mResource Load (0.2ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mResource Load (0.2ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (516.83ms)
+Completed 200 OK in 1160ms (Views: 689.7ms | ActiveRecord: 776.5ms)
+
+
+Started GET "/survivors" for 127.0.0.1 at 2017-01-02 18:17:34 -0200
+Processing by SurvivorsController#index as */*
+  Parameters: {"survivor"=>{}}
+  [1m[36mSurvivor Load (0.8ms)[0m  [1m[34mSELECT "survivors".* FROM "survivors"[0m
+[active_model_serializers]   [1m[36mItem Load (0.6ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."survivor_id" = $1[0m  [["survivor_id", 3]]
+[active_model_serializers]   [1m[36mItem Load (0.4ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."survivor_id" = $1[0m  [["survivor_id", 2]]
+[active_model_serializers]   [1m[36mItem Load (0.4ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."survivor_id" = $1[0m  [["survivor_id", 1]]
+[active_model_serializers]   [1m[36mItem Load (0.4ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."survivor_id" = $1[0m  [["survivor_id", 4]]
+[active_model_serializers]   [1m[36mResource Load (0.4ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mResource Load (0.5ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mResource Load (0.6ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mResource Load (0.4ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (52.54ms)
+Completed 200 OK in 58ms (Views: 52.0ms | ActiveRecord: 5.0ms)
+
+
+Started PUT "/survivors/4" for 127.0.0.1 at 2017-01-02 18:17:40 -0200
+Processing by SurvivorsController#update as */*
+  Parameters: {"survivor"=>{"name"=>"costinha", "age"=>25, "gender"=>"F", "last_location_latitude"=>-1.0, "last_location_longitude"=>4.3, "infected"=>true}, "id"=>"4"}
+  [1m[36mSurvivor Load (0.6ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+Unpermitted parameter: infected
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers]   [1m[36mItem Load (0.7ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."survivor_id" = $1[0m  [["survivor_id", 4]]
+[active_model_serializers]   [1m[36mResource Load (0.4ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mResource Load (0.4ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mResource Load (1.2ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers] Rendered SurvivorSerializer with ActiveModelSerializers::Adapter::Attributes (14.84ms)
+Completed 200 OK in 27ms (Views: 13.2ms | ActiveRecord: 3.8ms)
+
+
+Started POST "/survivors/1/trade" for 127.0.0.1 at 2017-01-02 18:17:47 -0200
+Processing by SurvivorsController#trade as */*
+  Parameters: {"trade"=>{"survivor_id"=>3, "items_to_give"=>{"food"=>1}, "items_to_receive"=>{"food"=>1}}, "id"=>"1", "survivor"=>{}}
+  [1m[36mSurvivor Load (0.5ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSurvivor Load (0.6ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mResource Load (17.1ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."name" = $1 LIMIT $2[0m  [["name", "food"], ["LIMIT", 1]]
+  [1m[36mItem Load (0.4ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."resource_id" = $1 AND "items"."survivor_id" = $2 LIMIT $3[0m  [["resource_id", 2], ["survivor_id", 1], ["LIMIT", 1]]
+  [1m[36mResource Load (0.4ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSurvivor Load (0.4ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (199.8ms)[0m  [1m[33mUPDATE "items" SET "quantity" = $1, "updated_at" = $2 WHERE "items"."id" = $3[0m  [["quantity", 1], ["updated_at", 2017-01-02 20:17:48 UTC], ["id", 9]]
+  [1m[36mResource Load (0.3ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."name" = $1 LIMIT $2[0m  [["name", "food"], ["LIMIT", 1]]
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."resource_id" = $1 AND "items"."survivor_id" = $2 LIMIT $3[0m  [["resource_id", 2], ["survivor_id", 1], ["LIMIT", 1]]
+  [1m[36mResource Load (0.2ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSurvivor Load (0.3ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (9.6ms)[0m  [1m[33mUPDATE "items" SET "quantity" = $1, "updated_at" = $2 WHERE "items"."id" = $3[0m  [["quantity", 2], ["updated_at", 2017-01-02 20:17:48 UTC], ["id", 9]]
+  [1m[36mResource Load (0.3ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."name" = $1 LIMIT $2[0m  [["name", "food"], ["LIMIT", 1]]
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."resource_id" = $1 AND "items"."survivor_id" = $2 LIMIT $3[0m  [["resource_id", 2], ["survivor_id", 3], ["LIMIT", 1]]
+  [1m[36mResource Load (0.2ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSurvivor Load (0.3ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "items" SET "quantity" = $1, "updated_at" = $2 WHERE "items"."id" = $3[0m  [["quantity", 14], ["updated_at", 2017-01-02 20:17:48 UTC], ["id", 5]]
+  [1m[36mResource Load (0.3ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."name" = $1 LIMIT $2[0m  [["name", "food"], ["LIMIT", 1]]
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."resource_id" = $1 AND "items"."survivor_id" = $2 LIMIT $3[0m  [["resource_id", 2], ["survivor_id", 3], ["LIMIT", 1]]
+  [1m[36mResource Load (0.5ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSurvivor Load (0.4ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[33mUPDATE "items" SET "quantity" = $1, "updated_at" = $2 WHERE "items"."id" = $3[0m  [["quantity", 15], ["updated_at", 2017-01-02 20:17:48 UTC], ["id", 5]]
+  [1m[35m (38.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."survivor_id" = $1[0m  [["survivor_id", 1]]
+  [1m[36mResource Load (0.3ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mResource Load (0.3ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mResource Load (0.2ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."survivor_id" = $1[0m  [["survivor_id", 3]]
+  [1m[36mResource Load (0.2ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.7ms)
+Completed 200 OK in 376ms (Views: 29.3ms | ActiveRecord: 274.2ms)
+
+
+Started POST "/survivors/1/trade" for 127.0.0.1 at 2017-01-02 18:17:55 -0200
+Processing by SurvivorsController#trade as */*
+  Parameters: {"trade"=>{"survivor_id"=>2, "items_to_give"=>{"food"=>1}, "items_to_receive"=>{"food"=>1}}, "id"=>"1", "survivor"=>{}}
+  [1m[36mSurvivor Load (0.3ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSurvivor Load (0.4ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.7ms)
+
+
+  
+RuntimeError (Infected survivor julia cannot trade!):
+  
+app/models/survivor.rb:10:in `block in exchange_between_survivors'
+app/models/survivor.rb:9:in `each'
+app/models/survivor.rb:9:in `exchange_between_survivors'
+app/controllers/survivors_controller.rb:18:in `trade'
+Started GET "/survivors/1" for 127.0.0.1 at 2017-01-02 18:18:10 -0200
+Processing by SurvivorsController#show as */*
+  Parameters: {"id"=>"1", "survivor"=>{}}
+  [1m[36mSurvivor Load (0.7ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mItem Load (0.6ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."survivor_id" = $1[0m  [["survivor_id", 1]]
+[active_model_serializers]   [1m[36mResource Load (0.4ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mResource Load (0.3ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mResource Load (0.3ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers] Rendered SurvivorSerializer with ActiveModelSerializers::Adapter::Attributes (13.46ms)
+Completed 200 OK in 18ms (Views: 13.0ms | ActiveRecord: 2.3ms)
+
+
