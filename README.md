@@ -16,13 +16,11 @@ Things you may want to cover:
 
 * Endpoint List
 
-	HTTP Method   	|	URl path						| 		Data 										|		  Description
-
-1.     	GET             /survivors																				list all survivors registered
-
-2.     	GET             /survivors/:id  			     														shows information about survivor with id=:id
-
-3.		POST			/survivors							{													creates a new survivor and its items
+|	HTTP Method   	|	URl path						| 		Data 										|		  Description							   |
+|-------------------|-----------------------------------|---------------------------------------------------|--------------------------------------------------|
+|     	GET         |    /survivors						|													|	list all survivors registered                  |
+|     	GET         |    /survivors/:id  			    | 													|	shows information about survivor with id=:id   |
+|		POST		|	 /survivors						|	{												|	creates a new survivor and its items           |
 															  "survivor":{
 															      "name":[string],
 															      "age":[integer],
@@ -37,7 +35,7 @@ Things you may want to cover:
 															  }
 															}
 
-4.		POST 			/survivors/:id/report_infection		{													reports a survivor as infected																					"infected_id":[integer]
+|		POST 		|	/survivors/:id/report_infection |	{												|	reports a survivor as infected				   |																	"infected_id":[integer]
 															}
 
 5.		POST 			/survivors/:id/trade				{
