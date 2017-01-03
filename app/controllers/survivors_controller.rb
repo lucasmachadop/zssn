@@ -38,10 +38,13 @@ class SurvivorsController < ApplicationController
   # POST /survivors/1/report_infection
   def report_infection
     @reported = Survivor.find_by(:id=>infected_param[:infected_id])
-    # infection_report = InfectionReport.new(:reporter_survivor => @survivor, :reported_survivor => @reported)
-    # infection_report.save_and_verify_occurrences
     infection_report = @survivor.report_infection(@reported)
-    render json: infection_report
+    unless infection_report.valid?
+      render json: infection_report.errors, status: :unprocessable_entity
+    else
+     
+      render json: infection_report
+    end
   end
 
   # PATCH/PUT /survivors/1/last_location

@@ -7758,3 +7758,434 @@ Unpermitted parameters: id, survivor
 Completed 200 OK in 63ms (Views: 3.7ms | ActiveRecord: 54.8ms)
 
 
+Started POST "/survivors/1/report_infection" for 127.0.0.1 at 2017-01-03 17:27:15 -0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SurvivorsController#report_infection as */*
+  Parameters: {"infected_id"=>2, "id"=>"1", "survivor"=>{}}
+  [1m[36mSurvivor Load (0.2ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameters: id, survivor
+  [1m[36mSurvivor Load (0.1ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mInfectionReport Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1 AND "infection_reports"."reporter_survivor_id" = $2 LIMIT $3[0m  [["reported_survivor_id", 2], ["reporter_survivor_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT("infection_reports"."id") FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1[0m  [["reported_survivor_id", 2]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with InfectionReport (0.13ms)
+Completed 200 OK in 30ms (Views: 3.0ms | ActiveRecord: 4.5ms)
+
+
+Started POST "/survivors/1/report_infection" for 127.0.0.1 at 2017-01-03 17:27:51 -0200
+Processing by SurvivorsController#report_infection as */*
+  Parameters: {"infected_id"=>2, "id"=>"1", "survivor"=>{}}
+  [1m[36mSurvivor Load (0.4ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameters: id, survivor
+  [1m[36mSurvivor Load (0.1ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mInfectionReport Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1 AND "infection_reports"."reporter_survivor_id" = $2 LIMIT $3[0m  [["reported_survivor_id", 2], ["reporter_survivor_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT("infection_reports"."id") FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1[0m  [["reported_survivor_id", 2]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with InfectionReport (0.11ms)
+Completed 200 OK in 5ms (Views: 0.4ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/survivors/1/report_infection" for 127.0.0.1 at 2017-01-03 17:28:07 -0200
+Processing by SurvivorsController#report_infection as */*
+  Parameters: {"infected_id"=>2, "id"=>"1", "survivor"=>{}}
+  [1m[36mSurvivor Load (0.2ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameters: id, survivor
+  [1m[36mSurvivor Load (0.2ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mInfectionReport Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1 AND "infection_reports"."reporter_survivor_id" = $2 LIMIT $3[0m  [["reported_survivor_id", 2], ["reporter_survivor_id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "infection_reports" ("reporter_survivor_id", "reported_survivor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["reporter_survivor_id", 1], ["reported_survivor_id", 2], ["created_at", 2017-01-03 19:28:07 UTC], ["updated_at", 2017-01-03 19:28:07 UTC]]
+  [1m[35m (10.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT("infection_reports"."id") FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1[0m  [["reported_survivor_id", 2]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with InfectionReport (0.29ms)
+Completed 200 OK in 18ms (Views: 0.7ms | ActiveRecord: 12.0ms)
+
+
+Started POST "/survivors/1/report_infection" for 127.0.0.1 at 2017-01-03 17:28:11 -0200
+Processing by SurvivorsController#report_infection as */*
+  Parameters: {"infected_id"=>2, "id"=>"1", "survivor"=>{}}
+  [1m[36mSurvivor Load (0.2ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameters: id, survivor
+  [1m[36mSurvivor Load (0.3ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mInfectionReport Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1 AND "infection_reports"."reporter_survivor_id" = $2 LIMIT $3[0m  [["reported_survivor_id", 2], ["reporter_survivor_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT("infection_reports"."id") FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1[0m  [["reported_survivor_id", 2]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with InfectionReport (0.12ms)
+Completed 200 OK in 6ms (Views: 0.4ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/survivors" for 127.0.0.1 at 2017-01-03 17:29:32 -0200
+Error occurred while parsing request parameters.
+Contents:
+
+{
+"survivor":{
+    "name":"caio",
+    "age":"25",
+"gender":"M"
+
+"last_location_latitude":"2.0005",
+"infected":false,
+		"items":{
+"water":"4"
+		}
+	}
+}
+  
+ActionDispatch::ParamsParser::ParseError (822: unexpected token at '{
+"survivor":{
+    "name":"caio",
+    "age":"25",
+"gender":"M"
+
+"last_location_latitude":"2.0005",
+"infected":false,
+		"items":{
+"water":"4"
+		}
+	}
+}'):
+  
+actionpack (5.0.1) lib/action_dispatch/http/parameters.rb:78:in `rescue in parse_formatted_parameters'
+actionpack (5.0.1) lib/action_dispatch/http/parameters.rb:72:in `parse_formatted_parameters'
+actionpack (5.0.1) lib/action_dispatch/http/request.rb:354:in `block in POST'
+rack (2.0.1) lib/rack/request.rb:57:in `fetch'
+rack (2.0.1) lib/rack/request.rb:57:in `fetch_header'
+actionpack (5.0.1) lib/action_dispatch/http/request.rb:353:in `POST'
+actionpack (5.0.1) lib/action_controller/metal/params_wrapper.rb:282:in `_wrapper_enabled?'
+actionpack (5.0.1) lib/action_controller/metal/params_wrapper.rb:231:in `process_action'
+activerecord (5.0.1) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+actionpack (5.0.1) lib/abstract_controller/base.rb:126:in `process'
+actionpack (5.0.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (5.0.1) lib/action_controller/metal.rb:262:in `dispatch'
+actionpack (5.0.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (5.0.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.0.1) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.1) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.1) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.1) lib/action_dispatch/routing/route_set.rb:725:in `call'
+rack-attack (5.0.1) lib/rack/attack.rb:140:in `call'
+rack (2.0.1) lib/rack/etag.rb:25:in `call'
+rack (2.0.1) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.1) lib/rack/head.rb:12:in `call'
+activerecord (5.0.1) lib/active_record/migration.rb:553:in `call'
+actionpack (5.0.1) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.1) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.1) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.1) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.1) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+actionpack (5.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.1) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+railties (5.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.2) lib/puma/configuration.rb:225:in `call'
+puma (3.6.2) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.2) lib/puma/server.rb:415:in `process_client'
+puma (3.6.2) lib/puma/server.rb:275:in `block in run'
+puma (3.6.2) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+Started POST "/survivors" for 127.0.0.1 at 2017-01-03 17:29:47 -0200
+Processing by SurvivorsController#create as */*
+  Parameters: {"survivor"=>{"name"=>"caio", "age"=>"25", "gender"=>"M", "last_location_latitude"=>"2.0005", "infected"=>false, "items"=>{"water"=>"4"}}}
+Unpermitted parameters: infected, items
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.07ms)
+Completed 422 Unprocessable Entity in 4ms (Views: 1.4ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/survivors/1/report_infection" for 127.0.0.1 at 2017-01-03 17:31:30 -0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SurvivorsController#report_infection as */*
+  Parameters: {"infected_id"=>2, "id"=>"1", "survivor"=>{}}
+  [1m[36mSurvivor Load (0.3ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameters: id, survivor
+  [1m[36mSurvivor Load (0.2ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mInfectionReport Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1 AND "infection_reports"."reporter_survivor_id" = $2 LIMIT $3[0m  [["reported_survivor_id", 2], ["reporter_survivor_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT("infection_reports"."id") FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1[0m  [["reported_survivor_id", 2]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with InfectionReport (0.16ms)
+Completed 200 OK in 30ms (Views: 3.1ms | ActiveRecord: 5.1ms)
+
+
+Started POST "/survivors/1/report_infection" for 127.0.0.1 at 2017-01-03 17:33:10 -0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SurvivorsController#report_infection as */*
+  Parameters: {"infected_id"=>2, "id"=>"1", "survivor"=>{}}
+  [1m[36mSurvivor Load (0.2ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameters: id, survivor
+  [1m[36mSurvivor Load (0.1ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mInfectionReport Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1 AND "infection_reports"."reporter_survivor_id" = $2 LIMIT $3[0m  [["reported_survivor_id", 2], ["reporter_survivor_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT("infection_reports"."id") FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1[0m  [["reported_survivor_id", 2]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.07ms)
+Completed 422 Unprocessable Entity in 27ms (Views: 2.1ms | ActiveRecord: 4.0ms)
+
+
+Started POST "/survivors/1/report_infection" for 127.0.0.1 at 2017-01-03 17:33:19 -0200
+Processing by SurvivorsController#report_infection as */*
+  Parameters: {"infected_id"=>2, "id"=>"1", "survivor"=>{}}
+  [1m[36mSurvivor Load (0.7ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameters: id, survivor
+  [1m[36mSurvivor Load (0.2ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mInfectionReport Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1 AND "infection_reports"."reporter_survivor_id" = $2 LIMIT $3[0m  [["reported_survivor_id", 2], ["reporter_survivor_id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "infection_reports" ("reporter_survivor_id", "reported_survivor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["reporter_survivor_id", 1], ["reported_survivor_id", 2], ["created_at", 2017-01-03 19:33:19 UTC], ["updated_at", 2017-01-03 19:33:19 UTC]]
+  [1m[35m (29.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT("infection_reports"."id") FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1[0m  [["reported_survivor_id", 2]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.05ms)
+Completed 422 Unprocessable Entity in 36ms (Views: 0.4ms | ActiveRecord: 31.2ms)
+
+
+Started POST "/survivors/1/report_infection" for 127.0.0.1 at 2017-01-03 17:33:23 -0200
+Processing by SurvivorsController#report_infection as */*
+  Parameters: {"infected_id"=>2, "id"=>"1", "survivor"=>{}}
+  [1m[36mSurvivor Load (0.2ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameters: id, survivor
+  [1m[36mSurvivor Load (0.3ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mInfectionReport Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1 AND "infection_reports"."reporter_survivor_id" = $2 LIMIT $3[0m  [["reported_survivor_id", 2], ["reporter_survivor_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT("infection_reports"."id") FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1[0m  [["reported_survivor_id", 2]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.06ms)
+Completed 422 Unprocessable Entity in 6ms (Views: 0.4ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/survivors/1/report_infection" for 127.0.0.1 at 2017-01-03 17:34:27 -0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SurvivorsController#report_infection as */*
+  Parameters: {"infected_id"=>2, "id"=>"1", "survivor"=>{}}
+  [1m[36mSurvivor Load (0.3ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameters: id, survivor
+  [1m[36mSurvivor Load (0.2ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mInfectionReport Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1 AND "infection_reports"."reporter_survivor_id" = $2 LIMIT $3[0m  [["reported_survivor_id", 2], ["reporter_survivor_id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "infection_reports" ("reporter_survivor_id", "reported_survivor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["reporter_survivor_id", 1], ["reported_survivor_id", 2], ["created_at", 2017-01-03 19:34:27 UTC], ["updated_at", 2017-01-03 19:34:27 UTC]]
+  [1m[35m (128.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT("infection_reports"."id") FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1[0m  [["reported_survivor_id", 2]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.05ms)
+Completed 500 Internal Server Error in 156ms (Views: 2.4ms | ActiveRecord: 133.2ms)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  
+app/controllers/survivors_controller.rb:48:in `report_infection'
+Started POST "/survivors/1/report_infection" for 127.0.0.1 at 2017-01-03 17:34:33 -0200
+Processing by SurvivorsController#report_infection as */*
+  Parameters: {"infected_id"=>2, "id"=>"1", "survivor"=>{}}
+  [1m[36mSurvivor Load (0.5ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameters: id, survivor
+  [1m[36mSurvivor Load (0.2ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mInfectionReport Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1 AND "infection_reports"."reporter_survivor_id" = $2 LIMIT $3[0m  [["reported_survivor_id", 2], ["reporter_survivor_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT("infection_reports"."id") FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1[0m  [["reported_survivor_id", 2]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.06ms)
+Completed 500 Internal Server Error in 10ms (Views: 0.4ms | ActiveRecord: 1.4ms)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  
+app/controllers/survivors_controller.rb:48:in `report_infection'
+Started POST "/survivors/1/report_infection" for 127.0.0.1 at 2017-01-03 17:34:51 -0200
+Processing by SurvivorsController#report_infection as */*
+  Parameters: {"infected_id"=>2, "id"=>"1", "survivor"=>{}}
+  [1m[36mSurvivor Load (0.3ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameters: id, survivor
+  [1m[36mSurvivor Load (0.2ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mInfectionReport Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1 AND "infection_reports"."reporter_survivor_id" = $2 LIMIT $3[0m  [["reported_survivor_id", 2], ["reporter_survivor_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT("infection_reports"."id") FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1[0m  [["reported_survivor_id", 2]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.07ms)
+Completed 422 Unprocessable Entity in 24ms (Views: 1.7ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/survivors/1/report_infection" for 127.0.0.1 at 2017-01-03 17:35:10 -0200
+Processing by SurvivorsController#report_infection as */*
+  Parameters: {"infected_id"=>2, "id"=>"1", "survivor"=>{}}
+  [1m[36mSurvivor Load (0.2ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameters: id, survivor
+  [1m[36mSurvivor Load (0.2ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mInfectionReport Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1 AND "infection_reports"."reporter_survivor_id" = $2 LIMIT $3[0m  [["reported_survivor_id", 2], ["reporter_survivor_id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "infection_reports" ("reporter_survivor_id", "reported_survivor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["reporter_survivor_id", 1], ["reported_survivor_id", 2], ["created_at", 2017-01-03 19:35:10 UTC], ["updated_at", 2017-01-03 19:35:10 UTC]]
+  [1m[35m (11.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT("infection_reports"."id") FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1[0m  [["reported_survivor_id", 2]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.04ms)
+Completed 422 Unprocessable Entity in 19ms (Views: 0.3ms | ActiveRecord: 13.1ms)
+
+
+Started POST "/survivors/1/report_infection" for 127.0.0.1 at 2017-01-03 17:35:30 -0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SurvivorsController#report_infection as */*
+  Parameters: {"infected_id"=>2, "id"=>"1", "survivor"=>{}}
+  [1m[36mSurvivor Load (0.3ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameters: id, survivor
+  [1m[36mSurvivor Load (0.2ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mInfectionReport Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1 AND "infection_reports"."reporter_survivor_id" = $2 LIMIT $3[0m  [["reported_survivor_id", 2], ["reporter_survivor_id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "infection_reports" ("reporter_survivor_id", "reported_survivor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["reporter_survivor_id", 1], ["reported_survivor_id", 2], ["created_at", 2017-01-03 19:35:31 UTC], ["updated_at", 2017-01-03 19:35:31 UTC]]
+  [1m[35m (17.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT("infection_reports"."id") FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1[0m  [["reported_survivor_id", 2]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.07ms)
+Completed 422 Unprocessable Entity in 45ms (Views: 2.4ms | ActiveRecord: 22.4ms)
+
+
+Started POST "/survivors/1/report_infection" for 127.0.0.1 at 2017-01-03 17:36:46 -0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SurvivorsController#report_infection as */*
+  Parameters: {"infected_id"=>2, "id"=>"1", "survivor"=>{}}
+  [1m[36mSurvivor Load (0.3ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameters: id, survivor
+  [1m[36mSurvivor Load (0.2ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mInfectionReport Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1 AND "infection_reports"."reporter_survivor_id" = $2 LIMIT $3[0m  [["reported_survivor_id", 2], ["reporter_survivor_id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "infection_reports" ("reporter_survivor_id", "reported_survivor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["reporter_survivor_id", 1], ["reported_survivor_id", 2], ["created_at", 2017-01-03 19:36:47 UTC], ["updated_at", 2017-01-03 19:36:47 UTC]]
+  [1m[35m (12.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT("infection_reports"."id") FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1[0m  [["reported_survivor_id", 2]]
+  [1m[36mInfectionReport Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1 AND ("infection_reports"."id" != $2) AND "infection_reports"."reporter_survivor_id" = $3 LIMIT $4[0m  [["reported_survivor_id", 2], ["id", 9], ["reporter_survivor_id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.07ms)
+Completed 422 Unprocessable Entity in 86913ms (Views: 8.3ms | ActiveRecord: 18.1ms)
+
+
+Started POST "/survivors/1/report_infection" for 127.0.0.1 at 2017-01-03 17:38:23 -0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SurvivorsController#report_infection as */*
+  Parameters: {"infected_id"=>2, "id"=>"1", "survivor"=>{}}
+  [1m[36mSurvivor Load (0.2ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameters: id, survivor
+  [1m[36mSurvivor Load (0.2ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mInfectionReport Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1 AND "infection_reports"."reporter_survivor_id" = $2 LIMIT $3[0m  [["reported_survivor_id", 2], ["reporter_survivor_id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "infection_reports" ("reporter_survivor_id", "reported_survivor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["reporter_survivor_id", 1], ["reported_survivor_id", 2], ["created_at", 2017-01-03 19:38:23 UTC], ["updated_at", 2017-01-03 19:38:23 UTC]]
+  [1m[35m (14.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT("infection_reports"."id") FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1[0m  [["reported_survivor_id", 2]]
+  [1m[36mInfectionReport Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1 AND ("infection_reports"."id" != $2) AND "infection_reports"."reporter_survivor_id" = $3 LIMIT $4[0m  [["reported_survivor_id", 2], ["id", 10], ["reporter_survivor_id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with InfectionReport (0.34ms)
+Completed 200 OK in 45ms (Views: 3.6ms | ActiveRecord: 20.1ms)
+
+
+Started POST "/survivors/1/report_infection" for 127.0.0.1 at 2017-01-03 17:38:25 -0200
+Processing by SurvivorsController#report_infection as */*
+  Parameters: {"infected_id"=>2, "id"=>"1", "survivor"=>{}}
+  [1m[36mSurvivor Load (0.5ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameters: id, survivor
+  [1m[36mSurvivor Load (0.2ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mInfectionReport Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1 AND "infection_reports"."reporter_survivor_id" = $2 LIMIT $3[0m  [["reported_survivor_id", 2], ["reporter_survivor_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT("infection_reports"."id") FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1[0m  [["reported_survivor_id", 2]]
+  [1m[36mInfectionReport Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1 AND "infection_reports"."reporter_survivor_id" = $2 LIMIT $3[0m  [["reported_survivor_id", 2], ["reporter_survivor_id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.06ms)
+Completed 422 Unprocessable Entity in 9ms (Views: 1.1ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/survivors/1/report_infection" for 127.0.0.1 at 2017-01-03 17:38:25 -0200
+Processing by SurvivorsController#report_infection as */*
+  Parameters: {"infected_id"=>2, "id"=>"1", "survivor"=>{}}
+  [1m[36mSurvivor Load (0.3ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameters: id, survivor
+  [1m[36mSurvivor Load (0.3ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mInfectionReport Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1 AND "infection_reports"."reporter_survivor_id" = $2 LIMIT $3[0m  [["reported_survivor_id", 2], ["reporter_survivor_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT("infection_reports"."id") FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1[0m  [["reported_survivor_id", 2]]
+  [1m[36mInfectionReport Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1 AND "infection_reports"."reporter_survivor_id" = $2 LIMIT $3[0m  [["reported_survivor_id", 2], ["reporter_survivor_id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.08ms)
+Completed 422 Unprocessable Entity in 8ms (Views: 0.4ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/survivors/1/report_infection" for 127.0.0.1 at 2017-01-03 17:38:29 -0200
+Processing by SurvivorsController#report_infection as */*
+  Parameters: {"infected_id"=>2, "id"=>"1", "survivor"=>{}}
+  [1m[36mSurvivor Load (0.3ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameters: id, survivor
+  [1m[36mSurvivor Load (0.2ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mInfectionReport Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1 AND "infection_reports"."reporter_survivor_id" = $2 LIMIT $3[0m  [["reported_survivor_id", 2], ["reporter_survivor_id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "infection_reports" ("reporter_survivor_id", "reported_survivor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["reporter_survivor_id", 1], ["reported_survivor_id", 2], ["created_at", 2017-01-03 19:38:29 UTC], ["updated_at", 2017-01-03 19:38:29 UTC]]
+  [1m[35m (14.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT("infection_reports"."id") FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1[0m  [["reported_survivor_id", 2]]
+  [1m[36mInfectionReport Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1 AND ("infection_reports"."id" != $2) AND "infection_reports"."reporter_survivor_id" = $3 LIMIT $4[0m  [["reported_survivor_id", 2], ["id", 11], ["reporter_survivor_id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with InfectionReport (0.41ms)
+Completed 200 OK in 21ms (Views: 0.9ms | ActiveRecord: 15.6ms)
+
+
+Started POST "/survivors/1/report_infection" for 127.0.0.1 at 2017-01-03 17:38:31 -0200
+Processing by SurvivorsController#report_infection as */*
+  Parameters: {"infected_id"=>2, "id"=>"1", "survivor"=>{}}
+  [1m[36mSurvivor Load (0.3ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameters: id, survivor
+  [1m[36mSurvivor Load (0.3ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mInfectionReport Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1 AND "infection_reports"."reporter_survivor_id" = $2 LIMIT $3[0m  [["reported_survivor_id", 2], ["reporter_survivor_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT("infection_reports"."id") FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1[0m  [["reported_survivor_id", 2]]
+  [1m[36mInfectionReport Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1 AND "infection_reports"."reporter_survivor_id" = $2 LIMIT $3[0m  [["reported_survivor_id", 2], ["reporter_survivor_id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.07ms)
+Completed 422 Unprocessable Entity in 7ms (Views: 0.4ms | ActiveRecord: 1.7ms)
+
+
+Started POST "/survivors" for 127.0.0.1 at 2017-01-03 17:40:57 -0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SurvivorsController#create as */*
+  Parameters: {"survivor"=>{"name"=>"caio", "age"=>"25", "gender"=>"M", "last_location_latitude"=>"2.0005", "infected"=>false, "items"=>{"water"=>"4"}}}
+Unpermitted parameters: infected, items
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.07ms)
+Completed 422 Unprocessable Entity in 12ms (Views: 2.1ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/survivors" for 127.0.0.1 at 2017-01-03 17:41:43 -0200
+Processing by SurvivorsController#create as */*
+  Parameters: {"survivor"=>{"name"=>"caio", "age"=>"25", "gender"=>"M", "last_location_longitude"=>"2.0005", "last_location_latitude"=>"92.0005", "infected"=>false, "items"=>{"water"=>"4"}}}
+Unpermitted parameters: infected, items
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.05ms)
+Completed 422 Unprocessable Entity in 2ms (Views: 0.4ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/survivors" for 127.0.0.1 at 2017-01-03 17:41:57 -0200
+Processing by SurvivorsController#create as */*
+  Parameters: {"survivor"=>{"name"=>"caio", "age"=>"25", "gender"=>"M", "last_location_longitude"=>"-2.0005", "last_location_latitude"=>"82.0005", "infected"=>false, "items"=>{"water"=>"4"}}}
+Unpermitted parameters: infected, items
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "survivors" ("name", "age", "gender", "last_location_longitude", "last_location_latitude", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "caio"], ["age", 25], ["gender", "M"], ["last_location_longitude", #<BigDecimal:416f040,'-0.20005E1',18(18)>], ["last_location_latitude", #<BigDecimal:416f0e0,'0.820005E2',18(18)>], ["created_at", 2017-01-03 19:41:57 UTC], ["updated_at", 2017-01-03 19:41:57 UTC]]
+  [1m[35m (10.4ms)[0m  [1m[35mCOMMIT[0m
+Unpermitted parameters: name, age, gender, last_location_longitude, last_location_latitude, infected
+  [1m[36mResource Load (0.2ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."name" = $1 LIMIT $2[0m  [["name", "water"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "items" ("resource_id", "survivor_id", "quantity", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["resource_id", 1], ["survivor_id", 3], ["quantity", 4], ["created_at", 2017-01-03 19:41:57 UTC], ["updated_at", 2017-01-03 19:41:57 UTC]]
+  [1m[35m (19.8ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers]   [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."survivor_id" = $1[0m  [["survivor_id", 3]]
+[active_model_serializers]   [1m[36mResource Load (0.2ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered SurvivorSerializer with ActiveModelSerializers::Adapter::Attributes (11.15ms)
+Completed 201 Created in 73ms (Views: 16.5ms | ActiveRecord: 36.2ms)
+
+

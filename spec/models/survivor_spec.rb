@@ -93,6 +93,23 @@ RSpec.describe Survivor, type: :model do
     @survivor2.items.first.resource.name.should_not eq "test"
   end	
 
+  it "cannot receive more or less points in a trade" do 
+    item_survivor = FactoryGirl.create(:item,survivor:@survivor,resource:FactoryGirl.create(:resource),quantity:2)
+    item_survivor2 = FactoryGirl.create(:item,survivor:@survivor2,resource:FactoryGirl.create(:resource,name:"gold"),quantity:2)
+    items_to_give = {"test":2}
+    items_to_receive = {"gold":1}
+    expect{
+      Survivor.exchange_between_survivors(@survivor,@survivor2,items_to_give,items_to_receive)
+    }.to raise_error("Trade's items total points do not match. Survivor MyString giving 2 and receiving 1 points.")
+        items_to_give = {"test":1}
+    items_to_receive = {"gold":2}
+    expect{
+      Survivor.exchange_between_survivors(@survivor,@survivor2,items_to_give,items_to_receive)
+    }.to raise_error("Trade's items total points do not match. Survivor MyString giving 1 and receiving 2 points.")
+    @survivor.items.first.resource.name.should_not eq "gold"
+    @survivor2.items.first.resource.name.should_not eq "test"
+  end  
+
   it "can report infections" do 
     report = @survivor.report_infection(@survivor2)
     report.should be_valid
@@ -100,5 +117,6 @@ RSpec.describe Survivor, type: :model do
     report.reported_survivor.should_not eq @survivor
     report.reporter_survivor.should eq @survivor
   end	
+
 
 end

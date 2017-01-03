@@ -2,6 +2,8 @@ class InfectionReport < ApplicationRecord
   belongs_to :reporter_survivor, class_name: "Survivor"
   belongs_to :reported_survivor, class_name: "Survivor"
 
+  validates_uniqueness_of :reported_survivor_id, :scope => :reporter_survivor_id, :message => "You have reported this survivor already!"
+
   # validates_presence_of :reporter_survivor_id, :reported_survivor_id
 
   def save_and_verify_occurrences

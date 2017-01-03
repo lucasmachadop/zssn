@@ -8,6 +8,9 @@ class Survivor < ApplicationRecord
   	GENDER_OPTIONS = %w(M F)
 	validates :gender, :inclusion => {:in =>  GENDER_OPTIONS}
 
+	validates :last_location_latitude , numericality: { greater_than_or_equal_to:  -90, less_than_or_equal_to:  90 }
+	validates :last_location_longitude, numericality: { greater_than_or_equal_to: -180, less_than_or_equal_to: 180 }
+
 	def self.exchange_between_survivors(survivor,trade_survivor,items_to_give, items_to_receive)
 		for s in [survivor,trade_survivor] do 
 			raise "Infected survivor #{s.name} cannot trade!" if s.infected?
