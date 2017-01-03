@@ -2,25 +2,23 @@
 
 Things you may want to cover:
 
-* Ruby version
-	2.3.3
+* Ruby version 2.3.3
 
-* Rails version
-	5.0.1
+* Rails version 5.0.1
 
-* Database 	
-	Postgresql 9.3
+* Database Postgresql 9.3
 
-* How to run the test suite
-	bundle exec rspec spec
+* How to run the test suite: bundle exec rspec spec
 
 * Endpoint List
 
-|	HTTP Method   	|	URl path						| 		Data 										|		  Description							   |
-|-------------------|-----------------------------------|---------------------------------------------------|--------------------------------------------------|
-|     	GET         |    /survivors						|													|	list all survivors registered                  |
-|     	GET         |    /survivors/:id  			    | 													|	shows information about survivor with id=:id   |
-|		POST		|	 /survivors						|	{												|	creates a new survivor and its items           |
+	HTTP Method   	 	URl path						 		Data 												  Description							
+
+1.     	GET             /survivors																				list all survivors registered
+
+2.     	GET             /survivors/:id  			     														shows information about survivor with id=:id
+
+3.		POST			/survivors							{													creates a new survivor and its items
 															  "survivor":{
 															      "name":[string],
 															      "age":[integer],
@@ -30,12 +28,12 @@ Things you may want to cover:
 															      "items":{
 															          "water": [integer]
 															          //valid "items" keys: "water",
-															          //"food", "medication" and "ammnutai
+															          //"food", "medication" and "ammnutaion".
 															      }
 															  }
 															}
 
-|		POST 		|	/survivors/:id/report_infection |	{												|	reports a survivor as infected				   |																	"infected_id":[integer]
+4.		POST 			/survivors/:id/report_infection		{													reports a survivor as infected																					"infected_id":[integer]
 															}
 
 5.		POST 			/survivors/:id/trade				{
