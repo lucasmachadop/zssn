@@ -1,5 +1,7 @@
 # README
 
+==Zombie Survival Social Network===
+
 Things you may want to cover:
 
 * Ruby version 2.3.3
@@ -81,7 +83,7 @@ IV.  Data |
 
 12. 	I. GET			II. reports/points_lost				III. shows resource points lost because of infected survivors
 
-There are other less important endpoints. For example, GET/resources and POST/resources that list and create new resources respectively.
+There are other less important endpoints. For example, GET /resources and POST /resources that list and create new resources respectively.
 To see all the routes, please run command rake routes.
 
 =======
