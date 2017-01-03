@@ -75,16 +75,16 @@ IV.  Data |
 
 8.      I. DELETE		II.	/survivors/:id 					III. destroys survivor with id=:id
 
-9. 		I. GET 			II. reports/infected 				III. shows rate of infected people		
+9. 		I. GET 			II. /reports/infected 				III. shows rate of infected people		
 
-10.     I. GET			II. reports/non-infected			III. shows rate of non infected people
+10.     I. GET			II. /reports/non-infected			III. shows rate of non infected people
 
-11. 	I. GET			II. reports/resources_averages		III. shows averages of each resource by non infected survivor
+11. 	I. GET			II. /reports/resources_averages		III. shows averages of each resource by non infected survivor
 
-12. 	I. GET			II. reports/points_lost				III. shows resource points lost because of infected survivors
+12. 	I. GET			II. /reports/points_lost			III. shows resource points lost because of infected survivors
 
 There are other less important endpoints. For example, GET /resources and POST /resources that list and create new resources respectively.
-To see all the routes, please run command rake routes.
+To see all the routes, please run command 'rake routes' in api dir.
 
 =======
 # zssn
