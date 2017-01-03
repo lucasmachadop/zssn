@@ -30,7 +30,7 @@ Things you may want to cover:
 															      "items":{
 															          "water": [integer]
 															          //valid "items" keys: "water",
-															          //"food", "medication" and "ammnutaion".
+															          //"food", "medication" and "ammnutai
 															      }
 															  }
 															}
