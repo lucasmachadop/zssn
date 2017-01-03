@@ -10,11 +10,11 @@ Things you may want to cover:
 
 * How to run the test suite: bundle exec rspec spec
 
-* Endpoint List 
-I.  Http Method
-II. Url Patch
-III.Data
-IV. Description							
+* Endpoint List: 
+I.   Http Method |
+II.  Url Patch |
+III. Description |
+IV.  Data |							
 
 1.     	I. GET           II.  /survivors		III. list all survivors registered
 
