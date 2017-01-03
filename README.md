@@ -8,7 +8,9 @@ Things you may want to cover:
 
 * Database Postgresql 9.3
 
-* How to run the test suite: bundle exec rspec spec
+* Run Project first time: bundle && rake db:create && rake db:migrate && rails s
+
+* Run automated tests: bundle exec rspec spec
 
 * Endpoint List => 
 | I.   Http Method |
@@ -69,8 +71,18 @@ IV.  Data |
 																															"longitude": [float]
 																														}	
 
-8.      I. DELETE		II.	/survivors/:id 					III. destroy survivor
+8.      I. DELETE		II.	/survivors/:id 					III. destroys survivor with id=:id
 
+9. 		I. GET 			II. reports/infected 				III. shows rate of infected people		
+
+10.     I. GET			II. reports/non-infected			III. shows rate of non infected people
+
+11. 	I. GET			II. reports/resources_averages		III. shows averages of each resource by non infected survivor
+
+12. 	I. GET			II. reports/points_lost				III. shows resource points lost because of infected survivors
+
+There are other less important endpoints. For example, GET/resources and POST/resources that list and create new resources respectively.
+To see all the routes, please run command rake routes.
 
 =======
 # zssn
