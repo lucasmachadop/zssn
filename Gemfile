@@ -26,6 +26,7 @@ gem 'puma', '~> 3.0'
 # gem 'rack-cors'
 gem 'pg'
 
+
 gem 'rack-cors'
 gem 'rack-attack'
 

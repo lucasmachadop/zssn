@@ -38,8 +38,9 @@ class SurvivorsController < ApplicationController
   # POST /survivors/1/report_infection
   def report_infection
     @reported = Survivor.find_by(:id=>infected_param[:infected])
-    infection_report = InfectionReport.new(:reporter_survivor => @survivor, :reported_survivor => @reported)
-    infection_report.save_and_verify_occurrences
+    # infection_report = InfectionReport.new(:reporter_survivor => @survivor, :reported_survivor => @reported)
+    # infection_report.save_and_verify_occurrences
+    infection_report = @survivor.report_infection(@reported)
     render json: infection_report
   end
 

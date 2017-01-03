@@ -7417,3 +7417,88 @@ Processing by SurvivorsController#show as */*
 Completed 200 OK in 18ms (Views: 13.0ms | ActiveRecord: 2.3ms)
 
 
+DEPRECATION WARNING: Passing strings or symbols to the middleware builder is deprecated, please change
+them to actual class references.  For example:
+
+  "Rack::Cors" => Rack::Cors
+
+ (called from <top (required)> at /home/hadutes/zssn/config/environment.rb:5)
+DEPRECATION WARNING: Passing strings or symbols to the middleware builder is deprecated, please change
+them to actual class references.  For example:
+
+  "Rack::Cors" => Rack::Cors
+
+ (called from <top (required)> at /home/hadutes/zssn/config/environment.rb:5)
+Started POST "/survivors" for 127.0.0.1 at 2017-01-03 01:45:23 -0200
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SurvivorsController#create as */*
+  Parameters: {"survivor"=>{"name"=>"costinha2", "age"=>25, "gender"=>"Fa", "last_location_latitude"=>-1.0, "last_location_longitude"=>4.3, "items"=>{"food"=>5, "medication"=>7, "gold"=>7, "water"=>2}}}
+Unpermitted parameter: items
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.15ms)
+Completed 422 Unprocessable Entity in 294ms (Views: 40.6ms | ActiveRecord: 236.4ms)
+
+
+Started POST "/survivors" for 127.0.0.1 at 2017-01-03 01:45:39 -0200
+Processing by SurvivorsController#create as */*
+  Parameters: {"survivor"=>{"name"=>"costinha2", "age"=>25, "gender"=>"F", "last_location_latitude"=>-1.0, "last_location_longitude"=>4.3, "items"=>{"food"=>5, "medication"=>7, "gold"=>7, "water"=>2}}}
+Unpermitted parameter: items
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (20.4ms)[0m  [1m[32mINSERT INTO "survivors" ("name", "age", "gender", "last_location_longitude", "last_location_latitude", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "costinha2"], ["age", 25], ["gender", "F"], ["last_location_longitude", #<BigDecimal:4553a58,'0.43E1',18(36)>], ["last_location_latitude", #<BigDecimal:4553c38,'-0.1E1',9(36)>], ["created_at", 2017-01-03 03:45:39 UTC], ["updated_at", 2017-01-03 03:45:39 UTC]]
+  [1m[35m (88.9ms)[0m  [1m[35mCOMMIT[0m
+Unpermitted parameter: gold
+Unpermitted parameters: name, age, gender, last_location_latitude, last_location_longitude
+  [1m[36mResource Load (84.2ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."name" = $1 LIMIT $2[0m  [["name", "water"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (228.6ms)[0m  [1m[32mINSERT INTO "items" ("resource_id", "survivor_id", "quantity", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["resource_id", 1], ["survivor_id", 5], ["quantity", 2], ["created_at", 2017-01-03 03:45:39 UTC], ["updated_at", 2017-01-03 03:45:39 UTC]]
+  [1m[35m (98.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mResource Load (0.4ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."name" = $1 LIMIT $2[0m  [["name", "food"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "items" ("resource_id", "survivor_id", "quantity", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["resource_id", 2], ["survivor_id", 5], ["quantity", 5], ["created_at", 2017-01-03 03:45:40 UTC], ["updated_at", 2017-01-03 03:45:40 UTC]]
+  [1m[35m (64.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mResource Load (0.3ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."name" = $1 LIMIT $2[0m  [["name", "medication"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "items" ("resource_id", "survivor_id", "quantity", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["resource_id", 3], ["survivor_id", 5], ["quantity", 7], ["created_at", 2017-01-03 03:45:40 UTC], ["updated_at", 2017-01-03 03:45:40 UTC]]
+  [1m[35m (40.3ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers]   [1m[36mItem Load (0.4ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."survivor_id" = $1[0m  [["survivor_id", 5]]
+[active_model_serializers]   [1m[36mResource Load (0.4ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mResource Load (1.5ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mResource Load (0.4ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers] Rendered SurvivorSerializer with ActiveModelSerializers::Adapter::Attributes (50.68ms)
+Completed 201 Created in 858ms (Views: 99.9ms | ActiveRecord: 640.4ms)
+
+
+Started POST "/survivors/1/report_infection" for 127.0.0.1 at 2017-01-03 02:07:48 -0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SurvivorsController#report_infection as */*
+  Parameters: {"infected"=>2, "id"=>"1", "survivor"=>{"infected"=>2}}
+  [1m[36mSurvivor Load (0.5ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameters: id, survivor
+  [1m[36mSurvivor Load (0.5ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (30.0ms)[0m  [1m[32mINSERT INTO "infection_reports" ("reporter_survivor_id", "reported_survivor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["reporter_survivor_id", 1], ["reported_survivor_id", 2], ["created_at", 2017-01-03 04:07:48 UTC], ["updated_at", 2017-01-03 04:07:48 UTC]]
+  [1m[35m (19.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT("infection_reports"."id") FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1[0m  [["reported_survivor_id", 2]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with InfectionReport (0.53ms)
+Completed 200 OK in 128ms (Views: 8.9ms | ActiveRecord: 58.0ms)
+
+
+Started POST "/survivors/1/report_infection" for 127.0.0.1 at 2017-01-03 02:08:08 -0200
+Processing by SurvivorsController#report_infection as */*
+  Parameters: {"infected"=>2, "id"=>"1", "survivor"=>{"infected"=>2}}
+  [1m[36mSurvivor Load (1.3ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameters: id, survivor
+  [1m[36mSurvivor Load (0.6ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (2.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "infection_reports" ("reporter_survivor_id", "reported_survivor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["reporter_survivor_id", 1], ["reported_survivor_id", 2], ["created_at", 2017-01-03 04:08:08 UTC], ["updated_at", 2017-01-03 04:08:08 UTC]]
+  [1m[35m (50.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT("infection_reports"."id") FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1[0m  [["reported_survivor_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with InfectionReport (0.59ms)
+Completed 200 OK in 70ms (Views: 1.5ms | ActiveRecord: 56.8ms)
+
+

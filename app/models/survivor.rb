@@ -3,7 +3,10 @@ class Survivor < ApplicationRecord
 	has_many :infection_reports_received, class_name: "InfectionReport", foreign_key: "reported_survivor_id"
 	has_many :infection_reports_given, class_name: "InfectionReport", foreign_key: "reporter_survivor_id"
 
-	validates_presence_of :last_location_latitude, :last_location_longitude
+	validates_presence_of :last_location_latitude, :last_location_longitude, :age, :gender, :name
+
+  	GENDER_OPTIONS = %w(M F)
+	validates :gender, :inclusion => {:in =>  GENDER_OPTIONS}
 
 	def self.exchange_between_survivors(survivor,trade_survivor,items_to_give, items_to_receive)
 		for s in [survivor,trade_survivor] do 
@@ -57,7 +60,12 @@ class Survivor < ApplicationRecord
 		trade_points
 	end
 
-
+	def report_infection reported 
+		infection_report = InfectionReport.new(:reporter_survivor => self, :reported_survivor => reported)
+    	infection_report.save_and_verify_occurrences
+		infection_report
+	end
+		
 	def mark_as_infected
 		self.infected = true
 		self.save
