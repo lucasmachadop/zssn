@@ -7,16 +7,8 @@ RSpec.describe SurvivorsController, type: :routing do
       expect(:get => "/survivors").to route_to("survivors#index")
     end
 
-    it "routes to #new" do
-      expect(:get => "/survivors/new").to route_to("survivors#new")
-    end
-
     it "routes to #show" do
       expect(:get => "/survivors/1").to route_to("survivors#show", :id => "1")
-    end
-
-    it "routes to #edit" do
-      expect(:get => "/survivors/1/edit").to route_to("survivors#edit", :id => "1")
     end
 
     it "routes to #create" do

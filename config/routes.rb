@@ -12,9 +12,12 @@ Rails.application.routes.draw do
   	end
   end	
 
+  root 'survivors#index'
+
   get 'reports/infected', to: 'reports#show_infected_rate'
   get 'reports/non-infected', to: 'reports#show_non_infected_rate'
   get 'reports/resources_averages', to: 'reports#show_resources_averages'
   get 'reports/points_lost', to: 'reports#show_points_lost_by_infection'
 
+  # root to: 'zssn'
 end

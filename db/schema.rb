@@ -41,12 +41,12 @@ ActiveRecord::Schema.define(version: 20161226170822) do
   end
 
   create_table "survivors", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "age"
-    t.string   "gender"
-    t.decimal  "last_location_longitude"
-    t.decimal  "last_location_latitude"
-    t.boolean  "infected",                default: false
+    t.string   "name",                                    null: false
+    t.integer  "age",                                     null: false
+    t.string   "gender",                                  null: false
+    t.decimal  "last_location_longitude",                 null: false
+    t.decimal  "last_location_latitude",                  null: false
+    t.boolean  "infected",                default: false, null: false
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
   end

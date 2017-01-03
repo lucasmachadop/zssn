@@ -7502,3 +7502,259 @@ Unpermitted parameters: id, survivor
 Completed 200 OK in 70ms (Views: 1.5ms | ActiveRecord: 56.8ms)
 
 
+Started POST "/survivors/3/trade" for 127.0.0.1 at 2017-01-03 10:25:00 -0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SurvivorsController#trade as */*
+  Parameters: {"trade"=>{"survivor_id"=>4, "items_to_give"=>{"food"=>1}, "items_to_receive"=>{"medication"=>1}}, "id"=>"3", "survivor"=>{}}
+  [1m[36mSurvivor Load (0.2ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mSurvivor Load (0.2ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mResource Load (0.2ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."name" = $1 LIMIT $2[0m  [["name", "food"], ["LIMIT", 1]]
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."resource_id" = $1 AND "items"."survivor_id" = $2 LIMIT $3[0m  [["resource_id", 30], ["survivor_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 6.3ms)
+
+
+  
+RuntimeError (Survivor lucrecia4 have only 0 food to trade.):
+  
+app/models/survivor.rb:35:in `block in give'
+app/models/survivor.rb:31:in `give'
+app/models/survivor.rb:22:in `trade'
+app/models/survivor.rb:16:in `block in exchange_between_survivors'
+app/models/survivor.rb:15:in `exchange_between_survivors'
+app/controllers/survivors_controller.rb:18:in `trade'
+Started POST "/survivors" for 127.0.0.1 at 2017-01-03 10:25:21 -0200
+Processing by SurvivorsController#create as */*
+  Parameters: {"survivor"=>{"name"=>"lucas3", "age"=>"25", "gender"=>"Male", "last_location_longitude"=>"-1.0000", "last_location_latitude"=>"2.0005", "infected"=>false, "items"=>{"water"=>"4"}}}
+Unpermitted parameters: infected, items
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.07ms)
+Completed 422 Unprocessable Entity in 133ms (Views: 3.0ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/survivors" for 127.0.0.1 at 2017-01-03 10:25:30 -0200
+Processing by SurvivorsController#create as */*
+  Parameters: {"survivor"=>{"name"=>"lucas3", "age"=>"25", "gender"=>"M", "last_location_longitude"=>"-1.0000", "last_location_latitude"=>"2.0005", "infected"=>false, "items"=>{"water"=>"4"}}}
+Unpermitted parameters: infected, items
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (9.7ms)[0m  [1m[32mINSERT INTO "survivors" ("name", "age", "gender", "last_location_longitude", "last_location_latitude", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "lucas3"], ["age", 25], ["gender", "M"], ["last_location_longitude", #<BigDecimal:439fba8,'-0.1E1',9(18)>], ["last_location_latitude", #<BigDecimal:439fc70,'0.20005E1',18(18)>], ["created_at", 2017-01-03 12:25:30 UTC], ["updated_at", 2017-01-03 12:25:30 UTC]]
+  [1m[35m (39.3ms)[0m  [1m[35mCOMMIT[0m
+Unpermitted parameters: name, age, gender, last_location_longitude, last_location_latitude, infected
+  [1m[36mResource Load (0.3ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."name" = $1 LIMIT $2[0m  [["name", "water"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "items" ("resource_id", "survivor_id", "quantity", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["resource_id", 29], ["survivor_id", 8], ["quantity", 4], ["created_at", 2017-01-03 12:25:30 UTC], ["updated_at", 2017-01-03 12:25:30 UTC]]
+  [1m[35m (8.9ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers]   [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."survivor_id" = $1[0m  [["survivor_id", 8]]
+[active_model_serializers]   [1m[36mResource Load (0.2ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+[active_model_serializers] Rendered SurvivorSerializer with ActiveModelSerializers::Adapter::Attributes (53.31ms)
+Completed 201 Created in 128ms (Views: 59.1ms | ActiveRecord: 59.8ms)
+
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (28.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[35m (5008.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "zssn_dev"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[35m (332.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "zssn_dev"[0m
+  [1m[35m (215.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "zssn_test"[0m
+  [1m[35m (691.0ms)[0m  [1m[35mCREATE DATABASE "zssn_dev" ENCODING = 'unicode'[0m
+  [1m[35m (531.8ms)[0m  [1m[35mCREATE DATABASE "zssn_test" ENCODING = 'unicode'[0m
+  [1m[35m (105.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (83.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2888816078766201675);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateSurvivors (20161226132148)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (72.9ms)[0m  [1m[35mCREATE TABLE "survivors" ("id" serial primary key, "name" character varying NOT NULL, "age" integer NOT NULL, "gender" character varying NOT NULL, "last_location_longitude" decimal NOT NULL, "last_location_latitude" decimal NOT NULL, "infected" boolean DEFAULT 'f' NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161226132148"]]
+  [1m[35m (11.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateResources (20161226133625)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (70.0ms)[0m  [1m[35mCREATE TABLE "resources" ("id" serial primary key, "name" character varying, "points" integer, "code" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161226133625"]]
+  [1m[35m (11.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateItems (20161226133648)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (49.2ms)[0m  [1m[35mCREATE TABLE "items" ("id" serial primary key, "resource_id" integer, "survivor_id" integer, "quantity" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_a57f853ade"
+FOREIGN KEY ("resource_id")
+  REFERENCES "resources" ("id")
+, CONSTRAINT "fk_rails_27c1602cf3"
+FOREIGN KEY ("survivor_id")
+  REFERENCES "survivors" ("id")
+)[0m
+  [1m[35m (36.1ms)[0m  [1m[35mCREATE  INDEX  "index_items_on_resource_id" ON "items"  ("resource_id")[0m
+  [1m[35m (49.5ms)[0m  [1m[35mCREATE  INDEX  "index_items_on_survivor_id" ON "items"  ("survivor_id")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161226133648"]]
+  [1m[35m (11.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateInfectionReports (20161226134216)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (46.4ms)[0m  [1m[35mCREATE TABLE "infection_reports" ("id" serial primary key, "reporter_survivor_id" integer NOT NULL, "reported_survivor_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161226134216"]]
+  [1m[35m (18.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to PopulateResources (20161226170822)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "resources" ("name", "points", "code", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "water"], ["points", 4], ["code", 4], ["created_at", 2017-01-03 12:27:04 UTC], ["updated_at", 2017-01-03 12:27:04 UTC]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "resources" ("name", "points", "code", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "food"], ["points", 3], ["code", 3], ["created_at", 2017-01-03 12:27:04 UTC], ["updated_at", 2017-01-03 12:27:04 UTC]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "resources" ("name", "points", "code", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "medication"], ["points", 2], ["code", 2], ["created_at", 2017-01-03 12:27:04 UTC], ["updated_at", 2017-01-03 12:27:04 UTC]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "resources" ("name", "points", "code", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "ammunation"], ["points", 1], ["code", 1], ["created_at", 2017-01-03 12:27:04 UTC], ["updated_at", 2017-01-03 12:27:04 UTC]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161226170822"]]
+  [1m[35m (5.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", 2017-01-03 12:27:04 UTC], ["updated_at", 2017-01-03 12:27:04 UTC]]
+  [1m[35m (3.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(2888816078766201675)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started POST "/survivors" for 127.0.0.1 at 2017-01-03 10:27:14 -0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SurvivorsController#create as */*
+  Parameters: {"survivor"=>{"name"=>"lucas3", "age"=>"25", "gender"=>"M", "last_location_longitude"=>"-1.0000", "last_location_latitude"=>"2.0005", "infected"=>false, "items"=>{"water"=>"4"}}}
+Unpermitted parameters: infected, items
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "survivors" ("name", "age", "gender", "last_location_longitude", "last_location_latitude", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "lucas3"], ["age", 25], ["gender", "M"], ["last_location_longitude", #<BigDecimal:5509bc8,'-0.1E1',9(18)>], ["last_location_latitude", #<BigDecimal:5509ce0,'0.20005E1',18(18)>], ["created_at", 2017-01-03 12:27:14 UTC], ["updated_at", 2017-01-03 12:27:14 UTC]]
+  [1m[35m (16.0ms)[0m  [1m[35mCOMMIT[0m
+Unpermitted parameters: name, age, gender, last_location_longitude, last_location_latitude, infected
+  [1m[36mResource Load (0.2ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."name" = $1 LIMIT $2[0m  [["name", "water"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "items" ("resource_id", "survivor_id", "quantity", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["resource_id", 1], ["survivor_id", 1], ["quantity", 4], ["created_at", 2017-01-03 12:27:14 UTC], ["updated_at", 2017-01-03 12:27:14 UTC]]
+  [1m[35m (7.7ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers]   [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."survivor_id" = $1[0m  [["survivor_id", 1]]
+[active_model_serializers]   [1m[36mResource Load (0.2ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered SurvivorSerializer with ActiveModelSerializers::Adapter::Attributes (9.68ms)
+Completed 201 Created in 66ms (Views: 14.6ms | ActiveRecord: 30.3ms)
+
+
+Started POST "/survivors" for 127.0.0.1 at 2017-01-03 12:39:19 -0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SurvivorsController#create as */*
+  Parameters: {"survivor"=>{"name"=>"lucas3", "age"=>"25", "gender"=>"M", "last_location_longitude"=>"-1.0000", "last_location_latitude"=>"2.0005", "infected"=>false, "items"=>{"water"=>"4"}}}
+Unpermitted parameters: infected, items
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "survivors" ("name", "age", "gender", "last_location_longitude", "last_location_latitude", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "lucas3"], ["age", 25], ["gender", "M"], ["last_location_longitude", #<BigDecimal:43c35d0,'-0.1E1',9(18)>], ["last_location_latitude", #<BigDecimal:43c3710,'0.20005E1',18(18)>], ["created_at", 2017-01-03 14:39:20 UTC], ["updated_at", 2017-01-03 14:39:20 UTC]]
+  [1m[35m (10.5ms)[0m  [1m[35mCOMMIT[0m
+Unpermitted parameters: name, age, gender, last_location_longitude, last_location_latitude, infected
+  [1m[36mResource Load (0.2ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."name" = $1 LIMIT $2[0m  [["name", "water"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "items" ("resource_id", "survivor_id", "quantity", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["resource_id", 1], ["survivor_id", 2], ["quantity", 4], ["created_at", 2017-01-03 14:39:20 UTC], ["updated_at", 2017-01-03 14:39:20 UTC]]
+  [1m[35m (6.9ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers]   [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."survivor_id" = $1[0m  [["survivor_id", 2]]
+[active_model_serializers]   [1m[36mResource Load (0.2ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered SurvivorSerializer with ActiveModelSerializers::Adapter::Attributes (9.92ms)
+Completed 201 Created in 61ms (Views: 15.3ms | ActiveRecord: 23.9ms)
+
+
+Started GET "/survivors" for 127.0.0.1 at 2017-01-03 12:39:25 -0200
+Processing by SurvivorsController#index as */*
+  Parameters: {"survivor"=>{}}
+  [1m[36mSurvivor Load (0.3ms)[0m  [1m[34mSELECT "survivors".* FROM "survivors"[0m
+[active_model_serializers]   [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."survivor_id" = $1[0m  [["survivor_id", 1]]
+[active_model_serializers]   [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."survivor_id" = $1[0m  [["survivor_id", 2]]
+[active_model_serializers]   [1m[36mResource Load (0.2ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.98ms)
+Completed 200 OK in 7ms (Views: 5.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-01-03 15:15:29 -0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SurvivorsController#index as */*
+  Parameters: {"survivor"=>{}}
+  [1m[36mSurvivor Load (0.2ms)[0m  [1m[34mSELECT "survivors".* FROM "survivors"[0m
+[active_model_serializers]   [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."survivor_id" = $1[0m  [["survivor_id", 1]]
+[active_model_serializers]   [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."survivor_id" = $1[0m  [["survivor_id", 2]]
+[active_model_serializers]   [1m[36mResource Load (0.2ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mResource Load (0.2ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (28.94ms)
+Completed 200 OK in 39ms (Views: 34.0ms | ActiveRecord: 6.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-01-03 15:15:30 -0200
+Processing by SurvivorsController#index as */*
+  Parameters: {"survivor"=>{}}
+  [1m[36mSurvivor Load (0.4ms)[0m  [1m[34mSELECT "survivors".* FROM "survivors"[0m
+[active_model_serializers]   [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."survivor_id" = $1[0m  [["survivor_id", 1]]
+[active_model_serializers]   [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."survivor_id" = $1[0m  [["survivor_id", 2]]
+[active_model_serializers]   [1m[36mResource Load (0.2ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (6.0ms)
+Completed 200 OK in 8ms (Views: 6.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-01-03 15:15:38 -0200
+Processing by SurvivorsController#index as HTML
+  [1m[36mSurvivor Load (0.2ms)[0m  [1m[34mSELECT "survivors".* FROM "survivors"[0m
+[active_model_serializers]   [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."survivor_id" = $1[0m  [["survivor_id", 1]]
+[active_model_serializers]   [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."survivor_id" = $1[0m  [["survivor_id", 2]]
+[active_model_serializers]   [1m[36mResource Load (0.2ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (6.62ms)
+Completed 200 OK in 8ms (Views: 7.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2017-01-03 15:15:39 -0200
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (5.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+actionpack (5.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.1) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+railties (5.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.2) lib/puma/configuration.rb:225:in `call'
+puma (3.6.2) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.2) lib/puma/server.rb:415:in `process_client'
+puma (3.6.2) lib/puma/server.rb:275:in `block in run'
+puma (3.6.2) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+Started POST "/survivors/1/report_infection" for 127.0.0.1 at 2017-01-03 16:08:39 -0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SurvivorsController#report_infection as */*
+  Parameters: {"infected"=>"1", "id"=>"1", "survivor"=>{"infected"=>"1"}}
+  [1m[36mSurvivor Load (0.2ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameters: infected, id, survivor
+  [1m[36mSurvivor Load (0.1ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 4.3ms)
+
+
+  
+NoMethodError (undefined method `id' for nil:NilClass):
+  
+app/models/infection_report.rb:9:in `save_and_verify_occurrences'
+app/models/survivor.rb:65:in `report_infection'
+app/controllers/survivors_controller.rb:43:in `report_infection'
+Started POST "/survivors/1/report_infection" for 127.0.0.1 at 2017-01-03 16:08:46 -0200
+Processing by SurvivorsController#report_infection as */*
+  Parameters: {"infected_id"=>"1", "id"=>"1", "survivor"=>{}}
+  [1m[36mSurvivor Load (0.6ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameters: id, survivor
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "survivors".* FROM "survivors" WHERE "survivors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (23.8ms)[0m  [1m[32mINSERT INTO "infection_reports" ("reporter_survivor_id", "reported_survivor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["reporter_survivor_id", 1], ["reported_survivor_id", 1], ["created_at", 2017-01-03 18:08:46 UTC], ["updated_at", 2017-01-03 18:08:46 UTC]]
+  [1m[35m (29.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT("infection_reports"."id") FROM "infection_reports" WHERE "infection_reports"."reported_survivor_id" = $1[0m  [["reported_survivor_id", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with InfectionReport (0.29ms)
+Completed 200 OK in 63ms (Views: 3.7ms | ActiveRecord: 54.8ms)
+
+

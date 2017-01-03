@@ -1,30 +1,82 @@
-<<<<<<< HEAD
 # README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
 Things you may want to cover:
 
 * Ruby version
 	2.3.3
-* System dependencies
 
-* Configuration
+* Rails version
+	5.0.1
 
-* Database creation
-
-* Database initialization
+* Database 	
+	Postgresql 9.3
 
 * How to run the test suite
+	bundle exec rspec spec
 
-* Services (job queues, cache servers, search engines, etc.)
+* Endpoint List
 
-	GET /survivors
-* Deployment instructions
+	HTTP Method   	|	URl path						| 		Data 										|		  Description
 
-* ...
+1.     	GET             /survivors																				list all survivors registered
+
+2.     	GET             /survivors/:id  			     														shows information about survivor with id=:id
+
+3.		POST			/survivors							{													creates a new survivor and its items
+															  "survivor":{
+															      "name":[string],
+															      "age":[integer],
+															      "gender":[string],
+															      "last_location_longitude":[float],
+															      "last_location_latitude":[float],
+															      "items":{
+															          "water": [integer]
+															          //valid "items" keys: "water",
+															          //"food", "medication" and "ammnutaion".
+															      }
+															  }
+															}
+
+4.		POST 			/survivors/:id/report_infection		{													reports a survivor as infected																					"infected_id":[integer]
+															}
+
+5.		POST 			/survivors/:id/trade				{
+																"trade":{
+																	"survivor_id":[integer],
+																	"items_to_give":{
+																		"food":[integer]
+																		//valid "items_to_give" keys: "water",
+																		//"food", "medication" and "ammnutaion".
+																	},
+																	"items_to_receive":{
+																		"medication":[integer]
+																		//valid "items_to_receive" keys: "water",
+																		//"food", "medication" and "ammnutaion".
+																	}
+																}
+															}															
+
+															 
+
+6.		PUT/PATCH		/survivors/:id 						{													updates survivor with id=:id
+															  "survivor":{
+															      "name":[string],
+															      "age":[integer],
+															      "gender":[string],
+															      "last_location_longitude":[float],
+															      "last_location_latitude":[float]
+															  }
+															}	
+
+7.		PUT/PATCH		/survivors/:id/last_location 		{													updates survivor with id=:id last location
+																"latitude": [float],
+																"longitude": [float]
+															}	
+
+8.      DELETE			/survivors/:id 																			destroy survivor
+
+
 =======
 # zssn
 Zombie Survival Social Network
->>>>>>> b94b565d85dbaca1ff2cf118bd0bc7090af36544
+

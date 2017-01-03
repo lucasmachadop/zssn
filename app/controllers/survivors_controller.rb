@@ -37,7 +37,7 @@ class SurvivorsController < ApplicationController
 
   # POST /survivors/1/report_infection
   def report_infection
-    @reported = Survivor.find_by(:id=>infected_param[:infected])
+    @reported = Survivor.find_by(:id=>infected_param[:infected_id])
     # infection_report = InfectionReport.new(:reporter_survivor => @survivor, :reported_survivor => @reported)
     # infection_report.save_and_verify_occurrences
     infection_report = @survivor.report_infection(@reported)
@@ -109,7 +109,7 @@ class SurvivorsController < ApplicationController
     end
 
     def infected_param
-      params.permit(:infected)
+      params.permit(:infected_id)
     end
 
     
