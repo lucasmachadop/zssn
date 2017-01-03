@@ -10,31 +10,29 @@ Things you may want to cover:
 
 * How to run the test suite: bundle exec rspec spec
 
-* Endpoint List
+* Endpoint List (a.HTTP METHOD	 b.URl PATCH  c.DATA   d.DESCRIPTION)							
 
-	HTTP Method   	 	URl path						 		Data 												  Description							
+1.     	a. GET           b.  /survivors																			d. list all survivors registered
 
-1.     	GET             /survivors																				list all survivors registered
+2.     	a. GET           b.  /survivors/:id  			     													d. shows information about survivor with id=:id
 
-2.     	GET             /survivors/:id  			     														shows information about survivor with id=:id
+3.		a. POST			 b.  /survivors						c.	{												d. creates a new survivor and its items
+																  "survivor":{
+																      "name":[string],
+																      "age":[integer],
+																      "gender":[string],
+																      "last_location_longitude":[float],
+																      "last_location_latitude":[float],
+																      "items":{
+																          "water": [integer]
+																          //valid "items" keys: "water",
+																          //"food", "medication" and "ammnutaion".
+																      }
+																  }
+																}
 
-3.		POST			/survivors							{													creates a new survivor and its items
-															  "survivor":{
-															      "name":[string],
-															      "age":[integer],
-															      "gender":[string],
-															      "last_location_longitude":[float],
-															      "last_location_latitude":[float],
-															      "items":{
-															          "water": [integer]
-															          //valid "items" keys: "water",
-															          //"food", "medication" and "ammnutaion".
-															      }
-															  }
-															}
-
-4.		POST 			/survivors/:id/report_infection		{													reports a survivor as infected																					"infected_id":[integer]
-															}
+4.		a. POST 		 b.	/survivors/:id/report_infection	c.	{												d. reports a survivor as infected																					"infected_id":[integer]
+																}
 
 5.		POST 			/survivors/:id/trade				{
 																"trade":{
